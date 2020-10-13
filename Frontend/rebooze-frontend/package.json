@@ -1,6 +1,7 @@
 {
   "name": "rebooze-frontend",
   "version": "0.1.0",
+  "homepage": "rebooze.ie",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
