@@ -3,11 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Auth0Provider } from "@auth0/auth0-react";
+import LoginButton from './components/LoginButton'
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Auth0Provider
+    domain="dev-jlpcmeif.eu.auth0.com"
+    clientId="0qJeQS5S2IjLSwMB0GhxUQSZ8hR0PWDX"
+    redirectUri="http://localhost:3000"
+  >
     <App />
-  </React.StrictMode>,
+    <LoginButton/>
+
+  </Auth0Provider>,
   document.getElementById('root')
 );
 

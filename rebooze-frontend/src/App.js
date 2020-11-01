@@ -2,7 +2,7 @@ import React from 'react';
 import { createStore } from 'redux'
 import reducer from './reducers'
 import middleware from './middleware'
-
+import LoginButton from './components/LoginButton'
 import logo from './logo.svg';
 import './App.css';
 import { receiveBeers } from './actions/beers';
@@ -32,10 +32,13 @@ componentDidMount () {
     console.log(store.getState())
     return (
       <div className="App">
+        <div>
+          <LoginButton/>
+
+        </div>
         <p>
           Welcome to ReBooz
         </p>
-        {store.getState(beers)[1]}
   
       </div>
     );
