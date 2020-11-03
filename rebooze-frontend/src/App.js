@@ -3,6 +3,7 @@ import { createStore } from 'redux'
 import reducer from './reducers'
 import middleware from './middleware'
 import LoginButton from './components/LoginButton'
+import LogoutButton from './components/LogoutButton'
 import logo from './logo.svg';
 import './App.css';
 import { receiveBeers } from './actions/beers';
@@ -34,10 +35,11 @@ componentDidMount () {
       <div className="App">
         <div>
           <LoginButton/>
+          <LogoutButton/>
 
         </div>
         <p>
-          Welcome to ReBooz
+          Welcome to ReBooze
         </p>
   
       </div>

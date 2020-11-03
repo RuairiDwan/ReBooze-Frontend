@@ -13,8 +13,6 @@ ReactDOM.render(
     redirectUri="http://localhost:3000"
   >
     <App />
-    <LoginButton/>
-
   </Auth0Provider>,
   document.getElementById('root')
 );
