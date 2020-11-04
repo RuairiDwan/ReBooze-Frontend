@@ -7,11 +7,14 @@ import LogoutButton from './components/LogoutButton'
 import logo from './logo.svg';
 import './App.css';
 import { receiveBeers } from './actions/beers';
+import Profile from './components/Profile'
 import beers from './reducers/beers';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const store = createStore(reducer, middleware)
 
 export default class App extends React.Component {
+  
 componentDidMount () {
   var obj = {
     method: 'GET',
@@ -36,6 +39,7 @@ componentDidMount () {
         <div>
           <LoginButton/>
           <LogoutButton/>
+          <Profile/>
 
         </div>
         <p>
