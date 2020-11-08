@@ -10,6 +10,10 @@ import { receiveBeers } from './actions/beers';
 import Profile from './components/Profile'
 import beers from './reducers/beers';
 import { useAuth0 } from '@auth0/auth0-react';
+import Header from './components/Header';
+import SearchBeers from './components/SearchBeers';
+import Navbar from './components/navbar/Navbar';
+import { BrowserRouter as Router} from 'react-router-dom';
 
 const store = createStore(reducer, middleware)
 
@@ -40,6 +44,11 @@ componentDidMount () {
           <LoginButton/>
           <LogoutButton/>
           <Profile/>
+          <Router>
+            <Navbar />
+            </Router>
+            <Header />
+            <SearchBeers />
 
         </div>
         <p>
