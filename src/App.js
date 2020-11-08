@@ -10,6 +10,8 @@ import { receiveBeers } from './actions/beers';
 import Profile from './components/Profile'
 import beers from './reducers/beers';
 import { useAuth0 } from '@auth0/auth0-react';
+import { Provider } from 'react-redux'
+
 
 const store = createStore(reducer, middleware)
 
@@ -35,18 +37,19 @@ componentDidMount () {
   render(){
     console.log(store.getState())
     return (
-      <div className="App">
-        <div>
-          <LoginButton/>
-          <LogoutButton/>
-          <Profile/>
-
+      <Provider store={store}>
+        <div className="App">
+          <div>
+            <LoginButton props={store}/>
+            <LogoutButton/>
+            <Profile/>
+          </div>
+          <p>
+            Welcome to ReBooz
+          </p>   
         </div>
-        <p>
-          Welcome to ReBooze
-        </p>
-  
-      </div>
+      </Provider>    
+
     );
   }
 

@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Auth0Provider } from "@auth0/auth0-react";
-import LoginButton from './components/LoginButton'
 
 ReactDOM.render(
   <Auth0Provider
