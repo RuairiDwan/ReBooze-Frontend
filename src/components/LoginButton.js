@@ -7,21 +7,25 @@ import { retrieveUserData } from '../actions/retrieveUserData';
 
 const LoginButton = (props) => {
   const { loginWithRedirect } = useAuth0();
-  console.log("Login Button")
-  console.log(props)
 
-    
+
+
+  const userData = () => {
+    props.retrieveUserData({
+      "name": "Rory",
+    })
+  }
 
   
 
   const login = () => {
-    
-    Promise(() => loginWithRedirect())
-    .then(() => {
-      props.dispatch(retrieveUserData({
+      loginWithRedirect()
+
+
+      props.retrieveUserData({
         "name": "Rory"
-      })) 
-    }
+      })
+
   }
 
   return (
@@ -30,12 +34,19 @@ const LoginButton = (props) => {
 };
 
 
+const mapStateToProps = ({user}) => {
+
+  return {
+    user: user
+  }
+}
+
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    retrieveUserData: (id) => {dispatch(retrieveUserData)}
+    retrieveUserData: (data) => {dispatch(retrieveUserData(data))}
   }
 }
   
-export default connect(mapDispatchToProps)(LoginButton)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginButton)
   

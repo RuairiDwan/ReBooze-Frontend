@@ -10,69 +10,66 @@ import { receiveBeers } from './actions/beers';
 import Profile from './components/Profile'
 import beers from './reducers/beers';
 import { useAuth0 } from '@auth0/auth0-react';
-<<<<<<< HEAD
-import { Provider } from 'react-redux'
-
-=======
 import Header from './components/Header';
 import SearchBeers from './components/SearchBeers';
 import Navbar from './components/navbar/Navbar';
 import { BrowserRouter as Router} from 'react-router-dom';
->>>>>>> abbf60f0bd50791b09831227dd3d50ca55846c66
+import { Provider } from 'react-redux'
+import { retrieveUserData } from './actions/retrieveUserData';
+import * as API from './API'
+
+
+
 
 const store = createStore(reducer, middleware)
 
 export default class App extends React.Component {
   
-componentDidMount () {
-  var obj = {
-    method: 'GET',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json'
+  componentDidMount () {
+    
+
+    var obj = {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      }
     }
+
+    API.getBeers()
+    .then((responseData) => {
+      console.log('Beers Request', responseData)
+      store.dispatch(receiveBeers(responseData))
+    })
+
+
+
+    store.dispatch(retrieveUserData({
+      "name": "",
+      isAuthetiacted: false
+    }))
   }
 
-  fetch('https://rebooze.herokuapp.com/beers', obj)
-  .then((response) => response.json())
-  .then((responseData) => {
-    console.log('Beers Request', responseData)
-    store.dispatch(receiveBeers(responseData))
-  })
-}
-
-  render(){
-    console.log(store.getState())
-    return (
-<<<<<<< HEAD
-      <Provider store={store}>
+    render(){
+      console.log("Beers in store")
+      console.log(store.beers)
+      return (
         <div className="App">
-          <div>
-            <LoginButton props={store}/>
+          <Provider store={store}>
+            <LoginButton/>
             <LogoutButton/>
             <Profile/>
-          </div>
-          <p>
-            Welcome to ReBooz
-          </p>   
-=======
-      <div className="App">
-        <div>
-          <LoginButton/>
-          <LogoutButton/>
-          <Profile/>
-          <Router>
-            <Navbar />
-            </Router>
-            <Header />
-            <SearchBeers />
+            <Router>
+              <Navbar />
+              </Router>
+              <Header />
+              <SearchBeers />
+          </Provider>
 
->>>>>>> abbf60f0bd50791b09831227dd3d50ca55846c66
         </div>
-      </Provider>    
 
-    );
-  }
+      );
+    }
 
   }
 
