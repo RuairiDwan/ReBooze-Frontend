@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import reducer from './reducers'
 import middleware from './middleware'
 import LoginButton from './components/LoginButton'
@@ -7,6 +7,7 @@ import LogoutButton from './components/LogoutButton'
 import logo from './logo.svg';
 import './App.css';
 import { receiveBeers } from './actions/beers';
+import retrieveAllBeerData from './actions/retrieveAllBeerData'
 import Profile from './components/Profile'
 import beers from './reducers/beers';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -17,6 +18,7 @@ import { BrowserRouter as Router} from 'react-router-dom';
 import { Provider } from 'react-redux'
 import { retrieveUserData } from './actions/retrieveUserData';
 import * as API from './API'
+
 
 
 
@@ -36,11 +38,11 @@ export default class App extends React.Component {
       }
     }
 
-    API.getBeers()
-    .then((responseData) => {
-      console.log('Beers Request', responseData)
-      store.dispatch(receiveBeers(responseData))
-    })
+    
+
+    store.dispatch(retrieveAllBeerData())
+
+    
 
 
 
