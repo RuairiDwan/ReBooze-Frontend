@@ -1,13 +1,14 @@
 import React from 'react';
-import { createStore, applyMiddleware } from 'redux'
+import { createStore } from 'redux'
 import reducer from './reducers'
 import middleware from './middleware'
 import LoginButton from './components/LoginButton'
 import LogoutButton from './components/LogoutButton'
+import BeerList from './components/BeerList'
 import logo from './logo.svg';
 import './App.css';
 import { receiveBeers } from './actions/beers';
-import retrieveAllBeerData from './actions/retrieveAllBeerData'
+import retrieveAllData from './actions/retrieveAllData'
 import Profile from './components/Profile'
 import beers from './reducers/beers';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -24,37 +25,22 @@ import * as API from './API'
 
 
 const store = createStore(reducer, middleware)
-
+store.dispatch(retrieveAllData())
 export default class App extends React.Component {
   
   componentDidMount () {
-    
 
-    var obj = {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
+    store.dispatch(retrieveAllData())
 
-    
-
-    store.dispatch(retrieveAllBeerData())
-
-    
-
-
+    API.submitRating()
 
     store.dispatch(retrieveUserData({
       "name": "",
-      isAuthetiacted: false
+      isAuthenticated: false
     }))
   }
 
     render(){
-      console.log("Beers in store")
-      console.log(store.beers)
       return (
         <div className="App">
           <Provider store={store}>
@@ -62,10 +48,11 @@ export default class App extends React.Component {
             <LogoutButton/>
             <Profile/>
             <Router>
-              <Navbar />
+              <Navbar/>
               </Router>
               <Header />
               <SearchBeers />
+              <BeerList/>
           </Provider>
 
         </div>

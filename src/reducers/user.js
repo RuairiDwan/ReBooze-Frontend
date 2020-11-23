@@ -1,6 +1,6 @@
 import { RETRIEVE_USER_DATA } from '../actions/retrieveUserData'
 
-export default function user (state = {}, action) {
+export default function user (state = [], action) {
     console.log('Action Type', action.type)
 
     switch (action.type) {
