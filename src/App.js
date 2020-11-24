@@ -31,9 +31,7 @@ export default class App extends React.Component {
   componentDidMount () {
 
     store.dispatch(retrieveAllData())
-
-    API.submitRating()
-
+    
     store.dispatch(retrieveUserData({
       "name": "",
       isAuthenticated: false
@@ -49,7 +47,7 @@ export default class App extends React.Component {
             <Profile/>
             <Router>
               <Navbar/>
-              </Router>
+            </Router>
               <Header />
               <SearchBeers />
               <BeerList/>
