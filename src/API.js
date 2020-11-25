@@ -1,4 +1,5 @@
-const api = "https://rebooze.herokuapp.com"
+//const api = "https://rebooze.herokuapp.com"
+const api = "http://127.0.0.1:5000"
 
 var obj = {
     mode: 'cors',
@@ -15,18 +16,13 @@ export const getRatings = () =>
   fetch(`${api}/beerratings`, obj)
   .then(res => res.json())
 
-export const submitRating = () =>
+export const submitRating = (data) =>
   fetch(`${api}/beerratings`, {
     method: 'POST',
     headers: {
       ...obj.headers,
     },
-    body: JSON.stringify({
-      'beer_id': 1,
-      'user_id': 1,
-      'beer_rating': 4.2,
-      'comment': "Beer was nice"      
-    })
+    body: JSON.stringify(data)
   })
 
   
