@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import beerSearch from '../actions/beerSearch'
+import beerSearch from '../actions/beers/beerSearch'
 import BeerListItem from './BeerListItem'
 import CreateRating from './CreateRating'
 
@@ -32,21 +32,18 @@ class BeerList extends Component {
                     />
                 </div>
                 <div>
-                    <ol>
+                    <ul>
                     {beers && showingBeers.map((beer) => (
                         <li key = {beer.id}>
                             <BeerListItem
                             name={beer.name}
-                            rating={beer.avgRating}
+                            rating={beer.avg_ating}
+                            brewery={beer.brewery}
                             />
                         </li>
                         )
                         )}
-                    </ol>
-                </div>
-                <div>
-                    <CreateRating
-                    beerID={1}/>
+                    </ul>
                 </div>
             </div>
 

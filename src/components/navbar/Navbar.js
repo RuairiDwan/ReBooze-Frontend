@@ -3,6 +3,11 @@ import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import Dropdown from './Dropdown';
+import { useAuth0 } from "@auth0/auth0-react";
+import LoginButton from './LoginButton';
+import LogoutButton from '../LogoutButton';
+import ProfileButton from './ProfileButton'
+
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -10,6 +15,9 @@ function Navbar() {
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+
+  const { isAuthenticated } = useAuth0()
+
 
   const onMouseEnter = () => {
     if (window.innerWidth < 960) {
@@ -59,11 +67,11 @@ function Navbar() {
           </li>
           <li className='nav-item'>
             <Link
-              to='/products'
+              to='/rate'
               className='nav-links'
               onClick={closeMobileMenu}
             >
-              Add New Beer
+              Rate a Beer
             </Link>
           </li>
           <li className='nav-item'>
@@ -85,7 +93,12 @@ function Navbar() {
             </Link>
           </li>
         </ul>
-        <Button />
+
+        {!isAuthenticated && <Button/>}
+        {!isAuthenticated && <LoginButton/>}
+        {isAuthenticated && <ProfileButton/>}
+        {isAuthenticated && <LogoutButton/>}
+
       </nav>
     </>
   );

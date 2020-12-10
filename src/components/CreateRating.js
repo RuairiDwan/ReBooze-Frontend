@@ -27,12 +27,16 @@ class CreateRating extends Component {
               })
             
         }
+        console.log('Create Rating Props')
+        console.log(this.props)
         
 
         return (
             <div>
                 <div> 
-                    Submit a Rating
+                    Submit a Rating for {this.props.beerName}
+                    
+
                 </div>
                 <div>
                     <input

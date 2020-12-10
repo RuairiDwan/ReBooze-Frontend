@@ -1,4 +1,4 @@
-import { RETRIEVE_USER_DATA } from '../actions/retrieveUserData'
+import { RETRIEVE_USER_DATA } from '../actions/users/retrieveUserData'
 
 export default function user (state = [], action) {
     console.log('Action Type', action.type)

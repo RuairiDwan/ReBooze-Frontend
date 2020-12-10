@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
-import { retrieveUserData } from '../actions/retrieveUserData';
+import retrieveUserDataAsync from '../actions/users/retrieveUserDataAsync';
 
 
 const Profile = (props) => {
-  const { user , isAuthenticated} = useAuth0();
+  const { user , isAuthenticated, getAccessTokenSilently} = useAuth0();
   //const { name } = user;
   console.log(user)
   console.log("Profile")
@@ -22,6 +22,21 @@ const Profile = (props) => {
       <div>
       <h2>Profile</h2>
       <h2>{user.name}</h2>
+      <h2>{getAccessTokenSilently}</h2>
+      <button onClick={async () => {
+        try {
+          const token = await getAccessTokenSilently({
+            audience: 'https://rebooze-login',
+            scope: 'get:my-ratings',
+          })
+          console.log(token)
+        }
+
+        catch (e) {
+          console.error(e)
+        }
+      }}>Log In</button>
+
       </div>
     )
   );
@@ -29,7 +44,7 @@ const Profile = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    retrieveUserData: (data) => {dispatch(retrieveUserData(data))}
+    retrieveUserData: (data) => {dispatch(retrieveUserDataAsync(data))}
   }
 }
 

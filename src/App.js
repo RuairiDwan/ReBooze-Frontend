@@ -2,30 +2,32 @@ import React from 'react';
 import { createStore } from 'redux'
 import reducer from './reducers'
 import middleware from './middleware'
-import LoginButton from './components/LoginButton'
+import LoginButton from './components/navbar/LoginButton'
 import LogoutButton from './components/LogoutButton'
 import BeerList from './components/BeerList'
 import logo from './logo.svg';
 import './App.css';
-import { receiveBeers } from './actions/beers';
-import retrieveAllData from './actions/retrieveAllData'
+import { retrieveBeers } from './actions/beers/retrieveBeers';
+import retrieveAllData from './actions/beers/retrieveBeersAsync'
 import Profile from './components/Profile'
 import beers from './reducers/beers';
 import { useAuth0 } from '@auth0/auth0-react';
 import Header from './components/Header';
 import SearchBeers from './components/SearchBeers';
 import Navbar from './components/navbar/Navbar';
-import { BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { Provider } from 'react-redux'
-import { retrieveUserData } from './actions/retrieveUserData';
+import  retrieveUserData from './actions/users/retrieveUserData';
 import * as API from './API'
-
+import Beer from './components/Beer'
+import HomePage from './components/HomePage'
+import CreateRating from './components/CreateRating'
 
 
 
 
 const store = createStore(reducer, middleware)
-store.dispatch(retrieveAllData())
+
 export default class App extends React.Component {
   
   componentDidMount () {
@@ -40,20 +42,18 @@ export default class App extends React.Component {
 
     render(){
       return (
-        <div className="App">
-          <Provider store={store}>
-            <LoginButton/>
-            <LogoutButton/>
-            <Profile/>
-            <Router>
-              <Navbar/>
-            </Router>
-              <Header />
-              <SearchBeers />
-              <BeerList/>
-          </Provider>
+        <Provider store={store}>
 
-        </div>
+        <Router>
+          <Navbar/>
+          <div className="App">
+            <Route path='/' exact component={HomePage}/>
+            <Route path='/rate' component={CreateRating}/>
+            <Route path='/services' component={Profile}/>
+          </div>
+
+        </Router>
+        </Provider>
 
       );
     }

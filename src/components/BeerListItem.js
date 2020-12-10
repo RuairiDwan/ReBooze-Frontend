@@ -6,6 +6,8 @@ class BeerListItem extends Component {
             <div>
                 {this.props.name}
                 {this.props.rating}
+                {this.props.brewery}
+                <button/>
             </div>           
         )           
     }

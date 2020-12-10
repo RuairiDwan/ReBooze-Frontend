@@ -1,12 +1,12 @@
-import { RECEIVE_BEERS } from '../actions/beers'
-import { RETRIEVE_DATA } from '../actions/retrieveAllData'
-import { BEER_SEARCH } from '../actions/beerSearch'
+import { RETRIEVE_BEERS } from '../actions/beers/retrieveBeers'
+import { RETRIEVE_DATA } from '../actions/beers/retrieveBeersAsync'
+import { BEER_SEARCH } from '../actions/beers/beerSearch'
 
 export default function beers (state = [], action) {
     console.log('Action Type', action.type)
 
     switch (action.type) {
-        case RECEIVE_BEERS :
+        case RETRIEVE_BEERS :
             console.log('Receiving beers')
             return {
                 ...state,
