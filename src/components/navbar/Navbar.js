@@ -40,7 +40,7 @@ function Navbar() {
       <nav className='navbar'>
         <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
           Rebooze-
-          <i class="fas fa-beer"></i>
+          <i className="fas fa-beer"></i>
         </Link>
         <div className='menu-icon' onClick={handleClick}>
           <i className={click ? 'fas fa-times' : 'fas fa-bars'} />

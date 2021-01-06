@@ -8,7 +8,7 @@ export default function submitRatingAsync (data) {
         return API.submitRating(data)
         .then((responseData) => {
           console.log('Submitting Rating', responseData)
-          dispatch(submitRating(data))
+          dispatch(submitRating(responseData))
         })
     }
 }

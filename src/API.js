@@ -15,8 +15,8 @@ export const getBeers = () =>
   fetch(`${api}/beers`, obj)
   .then(res => res.json())
 
-export const getRatings = () =>
-  fetch(`${api}/beerratings`, obj)
+export const getRatings = (data) =>
+  fetch(`${api}/beerratings/1`, obj)
   .then(res => res.json())
 
 export const submitRating = (data) =>

@@ -22,6 +22,7 @@ import * as API from './API'
 import Beer from './components/Beer'
 import HomePage from './components/HomePage'
 import CreateRating from './components/CreateRating'
+import beerPageSelection from './actions/beers/beerPageSelection'
 
 
 
@@ -38,6 +39,8 @@ export default class App extends React.Component {
       "name": "",
       isAuthenticated: false
     }))
+
+    store.dispatch(beerPageSelection(""))
   }
 
     render(){
@@ -49,7 +52,8 @@ export default class App extends React.Component {
           <div className="App">
             <Route path='/' exact component={HomePage}/>
             <Route path='/rate' component={CreateRating}/>
-            <Route path='/services' component={Profile}/>
+            <Route path='/profile' component={Profile}/>
+            <Route path='/beer-page' component={Beer}/>
           </div>
 
         </Router>

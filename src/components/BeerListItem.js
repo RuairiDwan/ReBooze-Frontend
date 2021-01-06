@@ -1,4 +1,9 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import beerPageSelection from '../actions/beers/beerPageSelection'
+
+
 
 class BeerListItem extends Component {
     render () {
@@ -7,10 +12,28 @@ class BeerListItem extends Component {
                 {this.props.name}
                 {this.props.rating}
                 {this.props.brewery}
-                <button/>
+                <Link to='beer-page'>
+                    <button 
+                    type="button"
+                    onClick={() => this.props.beerPageSelection(this.props.name)}/>
+                </Link>
+                
             </div>           
         )           
     }
 }
 
-export default BeerListItem
+const mapStateToProps = () => {
+
+    return {
+    }
+
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+      beerPageSelection: (data) => {dispatch(beerPageSelection(data))}
+    }
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(BeerListItem)
