@@ -16,17 +16,21 @@ const LoginButton = (props) => {
     })
   }
 
-  
+  const login_part_two = () => {}
 
   const login = () => {
-      loginWithRedirect()
+      
 
 
       props.retrieveUserData({
         "name": "Rory"
       })
 
+      loginWithRedirect()
+
   }
+
+
 
   return (
     <button onClick={() => login()}>Log In</button>

@@ -23,6 +23,7 @@ import Beer from './components/Beer'
 import HomePage from './components/HomePage'
 import CreateRating from './components/CreateRating'
 import beerPageSelection from './actions/beers/beerPageSelection'
+import Callback from './components/Callback'
 
 
 
@@ -54,6 +55,7 @@ export default class App extends React.Component {
             <Route path='/rate' component={CreateRating}/>
             <Route path='/profile' component={Profile}/>
             <Route path='/beer-page' component={Beer}/>
+            <Route path='/callback' component={Callback}/>
           </div>
 
         </Router>

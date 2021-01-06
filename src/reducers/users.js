@@ -6,9 +6,10 @@ export default function user (state = [], action) {
     switch (action.type) {
         case RETRIEVE_USER_DATA :
             console.log('Receiving User Data')
+            console.log(action.user)
             return {
                 ...state,
-                ...action.user
+                user: action.user
             }
         default :
             return state
