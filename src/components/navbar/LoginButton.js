@@ -8,29 +8,19 @@ import retrieveUserDataAsync from '../../actions/users/retrieveUserDataAsync';
 const LoginButton = (props) => {
   const { loginWithRedirect } = useAuth0();
 
-
-
   const userData = () => {
     props.retrieveUserData({
       "name": "Rory",
     })
   }
 
-  const login_part_two = () => {}
-
   const login = () => {
-      
-
-
       props.retrieveUserData({
         "name": "Rory"
       })
-
       loginWithRedirect()
 
   }
-
-
 
   return (
     <button onClick={() => login()}>Log In</button>

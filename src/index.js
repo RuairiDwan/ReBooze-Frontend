@@ -9,7 +9,7 @@ ReactDOM.render(
   <Auth0Provider
     domain="dev-jlpcmeif.eu.auth0.com"
     clientId="0qJeQS5S2IjLSwMB0GhxUQSZ8hR0PWDX"
-    redirectUri="https://myapp.rebooze:3000/callback"
+    redirectUri="https://localhost:3000/callback"
   >
     <App />
   </Auth0Provider>,

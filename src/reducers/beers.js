@@ -13,7 +13,8 @@ export default function beers (state = [], action) {
                 ...state,
                 ...action.beers
             }
-        case RETRIEVE_DATA :
+        case RETRIEVE_DATA:
+            console.log(state.beers)
             return {
                 ...state,
                 ...action.beers
@@ -21,6 +22,7 @@ export default function beers (state = [], action) {
         case BEER_SEARCH:
             console.log("Changing Search Term")
             console.log(action.searchTerm)
+     
             return {
                 ...state,
                 "searchTerm": action.searchTerm

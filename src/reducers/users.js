@@ -11,6 +11,7 @@ export default function user (state = [], action) {
                 ...state,
                 user: action.user
             }
+
         default :
             return state
     }

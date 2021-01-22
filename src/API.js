@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 
-const api = "https://rebooze.herokuapp.com"
-//const api = "http://127.0.0.1:5000"
+//const api = "https://rebooze.herokuapp.com"
+const api = "http://127.0.0.1:5000"
 
 
 var obj = {
@@ -27,6 +27,19 @@ export const submitRating = (data) =>
     },
     body: JSON.stringify(data)
   })
+
+export const getVotes = () =>
+    fetch(`${api}/votes/3`, obj)
+        .then(res => res.json())
+
+export const submitVote = (data) =>
+    fetch(`${api}/votes`, {
+        method: 'POST',
+        headers: {
+            ...obj.headers,
+        },
+        body: JSON.stringify(data)
+    })
 
 export const handleUserLogin = (data) => 
   fetch(`${api}/handlelogin`, {

@@ -2,14 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import BeerListItem from './BeerListItem'
 import retrieveRatingsAsync from '../actions/ratings/retrieveRatingsAsync'
+import retrieveVotesAsync from '../actions/ratings/retrieveVotesAsync'
+import VoteButton from './VoteButton';
 
 
 class Beer extends Component {
 
     componentDidMount () {
-        const ratings = this.props.retrieveRatings()
-        console.log("The ratings are")
-        console.log(ratings)
+        this.props.retrieveRatings()
+        setTimeout(this.props.retrieveVotes, 3000);
+        //this.props.retrieveVotes()
+        //console.log("The ratings are")
+        console.log(this.props.ratings)
+
     }
 
     render () {
@@ -17,16 +22,16 @@ class Beer extends Component {
         console.log(this.props.ratings)
 
         console.log("Beers")
-        console.log(this.props.beerSelected)
+        console.log(this.props.beers)
         const beer = this.props.beers && this.props.beers.filter((c) => (
             c.name === this.props.beerSelected
         ))
-        
-        const ratings = this.props.beers && this.props.ratings && this.props.ratings.filter((c) => (
+        console.log(this.props.ratings)
+        const filtered_ratings = this.props.beers && this.props.ratings && Object.values(this.props.ratings).filter((c) => (
             c.beer_id == 1
         ))
 
-        console.log(ratings)
+        console.log(filtered_ratings)
 
         return (
             <div>
@@ -38,14 +43,17 @@ class Beer extends Component {
             </div>
             <div>
                 <h1>Your Rating</h1>
-                <p>{ratings && ratings[0].comment}</p>
             </div>
             <div>
                 <h1>Top Ratings</h1>
                 <ul>
-                    {ratings && ratings.map((rating) => (
+                        {filtered_ratings && filtered_ratings.map((rating) => (
                         <li key = {rating.id}>
-                        {rating.comment}
+                                {rating.comment}
+                            <VoteButton
+                                vote={rating.vote ? rating.vote : false}
+                                rating_id={rating.id}
+                            />
                         </li>
                         )
                         )}
@@ -64,7 +72,7 @@ const mapStateToProps = ({beers, ratings}) => {
 
     return {
         beers: beers.beers,
-        ratings: ratings.beer_ratings,
+        ratings: ratings,
         beerSelected: beers.beerSelected
     }
 
@@ -72,7 +80,8 @@ const mapStateToProps = ({beers, ratings}) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        retrieveRatings: (data) => {dispatch(retrieveRatingsAsync(data))}     
+        retrieveRatings: (data) => { dispatch(retrieveRatingsAsync(data)) },
+        retrieveVotes: (data) => { dispatch(retrieveVotesAsync(data)) }
     }
   }
 

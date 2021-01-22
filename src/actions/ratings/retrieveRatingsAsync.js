@@ -1,5 +1,5 @@
 import * as API from '../../API'
-import { retrieveRatings } from './retriveRatings';
+import { retrieveRatings } from './retrieveRatings';
 
 export const RETRIEVE_RATINGS = 'RETRIEVE_RATINGS'
 
