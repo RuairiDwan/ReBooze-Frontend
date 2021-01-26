@@ -14,8 +14,8 @@ class BeerList extends Component {
         const { beers , searchTerm} = this.props
         console.log('Beer list')
         console.log(beers)
-
-        const showingBeers =  searchTerm === '' & this.props.beers
+        console.log(searchTerm)
+        const showingBeers = searchTerm === '' & this.props.beers || typeof searchTerm == 'undefined'
         ? beers
         : beers && beers.filter((c) => (
             c.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -36,9 +36,10 @@ class BeerList extends Component {
                     {beers && showingBeers.map((beer) => (
                         <li key = {beer.id}>
                             <BeerListItem
-                            name={beer.name}
-                            rating={beer.avg_ating}
-                            brewery={beer.brewery}
+                                name={beer.name}
+                                rating={beer.avg_ating}
+                                brewery={beer.brewery}
+                                id={beer.id}
                             />
                         </li>
                         )

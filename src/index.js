@@ -7,9 +7,11 @@ import { Auth0Provider } from "@auth0/auth0-react";
 
 ReactDOM.render(
   <Auth0Provider
-    domain="dev-jlpcmeif.eu.auth0.com"
-    clientId="0qJeQS5S2IjLSwMB0GhxUQSZ8hR0PWDX"
-    redirectUri="https://localhost:3000/callback"
+        domain="dev-jlpcmeif.eu.auth0.com"
+        clientId="0qJeQS5S2IjLSwMB0GhxUQSZ8hR0PWDX"
+        redirectUri="https://localhost:3000/callback"
+        audience="https://rebooze-login"
+        scope="get:my-ratings"
   >
     <App />
   </Auth0Provider>,

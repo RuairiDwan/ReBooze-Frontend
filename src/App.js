@@ -32,16 +32,12 @@ const store = createStore(reducer, middleware)
 
 export default class App extends React.Component {
   
-  componentDidMount () {
+    componentDidMount() {
+      console.log("The App component is mounting")
 
     store.dispatch(retrieveAllData())
     
-    store.dispatch(retrieveUserData({
-      "name": "",
-      isAuthenticated: false
-    }))
 
-    store.dispatch(beerPageSelection(""))
   }
 
     render(){

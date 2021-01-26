@@ -1,14 +1,55 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState, useCallback } from 'react'
 import { connect } from 'react-redux';
 import retrieveUserDataAsync from '../actions/users/retrieveUserDataAsync';
+import { useAuth0, auth0 } from "@auth0/auth0-react";
+import Cookies from 'universal-cookie';
+import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router';
 
 
 
 const Callback = (props) => {
 
-    props.retrieveUserData({
-        "name": "Rory",
-      })
+    const { user, isAuthenticated, getAccessTokenSilently } = useAuth0()
+    const history = useHistory();
+
+    const login = async () => {
+        try {
+            console.log("In async function----------------------------------------------")
+            const token = await getAccessTokenSilently({
+                audience: 'https://rebooze-login',
+                scope: "get:my-ratings"
+            });
+            cookies.set('JWT', token, { path: '/' });
+            console.log(token)
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    const handleNavigate = useCallback(() => history.push('/'), [history]);
+
+    console.log("The user is")
+    console.log(isAuthenticated)
+
+    isAuthenticated && login()
+
+    const cookies = new Cookies();
+    
+    console.log("The JWT is :")
+    console.log(cookies.get('JWT'));
+
+
+    typeof user !== 'string' && isAuthenticated && props.retrieveUserData({
+        "name": user.given_name,
+        "email": user.email
+    })
+
+    
+
+    if (isAuthenticated) {
+        return <Redirect push to="/" />;
+    }
 
     return (
         <div>

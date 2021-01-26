@@ -15,7 +15,7 @@ class BeerListItem extends Component {
                 <Link to='beer-page'>
                     <button 
                     type="button"
-                    onClick={() => this.props.beerPageSelection(this.props.name)}/>
+                    onClick={() => this.props.beerPageSelection(this.props.id)}/>
                 </Link>
                 
             </div>           

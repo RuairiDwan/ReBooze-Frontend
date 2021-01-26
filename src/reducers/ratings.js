@@ -19,7 +19,6 @@ export default function ratings (state = [], action) {
                 ...state,
                 ...action.ratings
             }
-
         case RETRIEVE_VOTES:
             console.log("Retrieving Votes")
             return Object.values(state).map(t1 => ({ ...t1, ...action.votes.find(t2 => t2.rating_id === t1.id) }))
