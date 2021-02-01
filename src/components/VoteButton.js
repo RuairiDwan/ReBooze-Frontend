@@ -11,7 +11,7 @@ function VoteButton(props) {
             className={props.vote === true ? 'btn_up_vote' : 'btn'}
             onClick={() => !props.vote && props.up_vote({
                 "rating_id": props.rating_id,
-                "voter_id": 3
+                "voter_id": 1
             })}
         >
             Vote

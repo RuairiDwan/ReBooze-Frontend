@@ -33,9 +33,11 @@ const store = createStore(reducer, middleware)
 export default class App extends React.Component {
   
     componentDidMount() {
-      console.log("The App component is mounting")
+        console.log("The App component is mounting")
+        const isAuthenticated = localStorage.getItem("isAuthenticated")
 
-    store.dispatch(retrieveAllData())
+
+        store.dispatch(retrieveAllData())
     
 
   }

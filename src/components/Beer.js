@@ -5,7 +5,9 @@ import retrieveRatingsAsync from '../actions/ratings/retrieveRatingsAsync'
 import retrieveVotesAsync from '../actions/ratings/retrieveVotesAsync'
 import VoteButton from './VoteButton';
 import beerPageSelection from '../actions/beers/beerPageSelection'
-
+import Createrating from './CreateRating'
+import "./beerImage.css"
+import CreateRating from './CreateRating';
 
 
 class Beer extends Component {
@@ -13,19 +15,19 @@ class Beer extends Component {
     componentDidMount () {
         this.props.retrieveRatings()
         this.props.retrieveVotes()
-        //localStorage.getItem()
-        console.log(!localStorage.getItem("beer_selected"))
-        console.log(localStorage.getItem("beer_selected"))
-        console.log(this.props.beerSelected)
+        const storedBeerSelected = localStorage.getItem("beer_selected")
+        const { beerSelected } = this.props
+        console.log(beerSelected)
         typeof localStorage.getItem("beer_selected") === 'string' && console.log("We here 0")//localStorage.setItem("beer_selected", this.props.beerSelected)
+        
+        console.log("Items being compared")
+        console.log(typeof beerSelected)
+        console.log(storedBeerSelected)
+        typeof beerSelected !== "undefined" && console.log(beerSelected.toString())
+        typeof beerSelected !== "undefined"  && beerSelected.toString() !== storedBeerSelected && localStorage.setItem("beer_selected", beerSelected.toString())
 
-        if (typeof localStorage.getItem("beer_selected") === 'string') {
-            localStorage.setItem("beer_selected", "3")
-        }
 
         console.log(typeof localStorage.getItem("beer_selected"))
-
-        //this.props.beerPageSelection(selected)
 
     }
 
@@ -52,16 +54,21 @@ class Beer extends Component {
 
         //Filtering out ratings for the selected beer
         const filtered_ratings = this.props.beers && this.props.ratings && Object.values(this.props.ratings).filter((c) => (
-            c.beer_id === this.props.beerSelected
+            c.beer_id === selected
         ))
+        console.log("Filtered Ratings")
+        console.log(filtered_ratings)
 
         return (
             <div>
+                <div>
+                    <img src={beer && selected && beer[0].image} className="photo" />
+                </div>
             <div>
                 <h1>Beer Page</h1>
             </div>
             <div>
-                <h1>{beer && beer[0].name}</h1>
+                    <h1>{beer && selected && beer[0].name}</h1>
             </div>
             <div>
                 <h1>Your Rating</h1>
@@ -80,7 +87,10 @@ class Beer extends Component {
                         )
                         )}
                 </ul>
-            </div>
+                </div>             
+                <div>
+                    <CreateRating/>
+                </div>
             </div>
 
         )

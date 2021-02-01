@@ -9,7 +9,8 @@ class CreateRating extends Component {
     
 
     render () {
-        const { submitRatingAsync } = this.props
+        const { submitRatingAsync, beer } = this.props
+        const selected = parseInt(localStorage.getItem("beer_selected"), 10)
 
         function ratingSubmitClick() {
             const commentBtn = document.getElementById('comment')
@@ -20,7 +21,7 @@ class CreateRating extends Component {
             ratingBtn.value = ''
 
             submitRatingAsync({
-                'beer_id': 1,
+                'beer_id': selected,
                 'user_id': 1,
                 'beer_rating': rating,
                 'comment': comment  

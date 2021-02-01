@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 
-//const api = "https://rebooze.herokuapp.com"
-const api = "http://127.0.0.1:5000"
+const api = "https://rebooze.herokuapp.com"
+//const api = "http://127.0.0.1:5000"
 
 
 var obj = {

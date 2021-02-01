@@ -15,12 +15,13 @@ const Callback = (props) => {
 
     const login = async () => {
         try {
-            console.log("In async function----------------------------------------------")
+            console.log("In async function")
             const token = await getAccessTokenSilently({
                 audience: 'https://rebooze-login',
                 scope: "get:my-ratings"
             });
             cookies.set('JWT', token, { path: '/' });
+
             console.log(token)
         } catch (e) {
             console.error(e);
