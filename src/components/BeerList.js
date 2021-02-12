@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import beerSearch from '../actions/beers/beerSearch'
 import BeerListItem from './BeerListItem'
-import CreateRating from './CreateRating'
-
+import "./BeerList.css"
 class BeerList extends Component {
 
     componentDidMount () {
@@ -23,29 +22,38 @@ class BeerList extends Component {
    
         return (
             <div>
-                <div>
-                    <input
+                <div className="search-container">
+                    <input 
+                        className="search-box"
                         type='text'
                         value={this.props.searchTerm}
                         placeholder='Search Beers'
                         onChange={(event) => this.props.beerSearch(event.target.value)}
                     />
+                    <button
+                    className="search-button">
+                        Search
+                    </button>
                 </div>
-                <div>
-                    <ul>
+
+                        <div class="row"> 
+                            <div class="column">Beer</div>
+                            <div class="column">Average Rating</div>
+                            <div class="column">Brewery</div>
+                            <div class="column">Total Ratings</div>
+                        </div>
                     {beers && showingBeers.map((beer) => (
-                        <li key = {beer.id}>
+                        <div key = {beer.id}>
                             <BeerListItem
                                 name={beer.name}
                                 rating={beer.avg_ating}
                                 brewery={beer.brewery}
+                                totalRatings={beer.totalRatings}
                                 id={beer.id}
                             />
-                        </li>
+                        </div>
                         )
                         )}
-                    </ul>
-                </div>
             </div>
 
 

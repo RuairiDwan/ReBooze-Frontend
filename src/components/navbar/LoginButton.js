@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { connect } from 'react-redux';
 import retrieveUserDataAsync from '../../actions/users/retrieveUserDataAsync';
-
+import './LoginButton.css'
 
 
 const LoginButton = (props) => {
@@ -10,7 +10,7 @@ const LoginButton = (props) => {
 
 
   return (
-      <button onClick={() => loginWithRedirect()}>Log In</button>
+      <button type="button" classs="button" onClick={() => loginWithRedirect()}>Log In</button>
   );
 };
 

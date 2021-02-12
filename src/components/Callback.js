@@ -1,7 +1,7 @@
-import React, { Component, useEffect, useState, useCallback } from 'react'
+import React, {useCallback } from 'react'
 import { connect } from 'react-redux';
 import retrieveUserDataAsync from '../actions/users/retrieveUserDataAsync';
-import { useAuth0, auth0 } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 import Cookies from 'universal-cookie';
 import { useHistory } from 'react-router-dom';
 import { Redirect } from 'react-router';
@@ -12,6 +12,7 @@ const Callback = (props) => {
 
     const { user, isAuthenticated, getAccessTokenSilently } = useAuth0()
     const history = useHistory();
+    isAuthenticated && localStorage.setItem("logged in", "true")
 
     const login = async () => {
         try {
@@ -27,9 +28,7 @@ const Callback = (props) => {
             console.error(e);
         }
     }
-
-    const handleNavigate = useCallback(() => history.push('/'), [history]);
-
+    
     console.log("The user is")
     console.log(isAuthenticated)
 

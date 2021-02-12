@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import BeerListItem from './BeerListItem'
 import retrieveRatingsAsync from '../actions/ratings/retrieveRatingsAsync'
 import retrieveVotesAsync from '../actions/ratings/retrieveVotesAsync'
 import VoteButton from './VoteButton';
 import beerPageSelection from '../actions/beers/beerPageSelection'
-import Createrating from './CreateRating'
 import "./beerImage.css"
 import CreateRating from './CreateRating';
 
@@ -33,17 +31,17 @@ class Beer extends Component {
 
     render () {
 
-        //Printing to console props
+        //Printing props to console 
         console.log(this.props.ratings)
         console.log("Beers")
         console.log(this.props.beers)
         console.log("Beer Selected:")
-        console.log(this.props.beerSelected) 
         console.log(localStorage.getItem("beer_selected"))
         const selected = parseInt(localStorage.getItem("beer_selected"), 10)
-        console.log(typeof selected)
-        console.log(selected)
-
+        const logged_in = localStorage.getItem("logged in")
+        console.log("Log in state:")
+        console.log(logged_in)
+        
         //Filtering out beer that was selected by user
         const beer = this.props.beers && this.props.beers.filter((c) => (
             c.id === selected
@@ -73,23 +71,32 @@ class Beer extends Component {
             <div>
                 <h1>Your Rating</h1>
             </div>
-            <div>
-                <h1>Top Ratings</h1>
-                <ul>
+            <div className="ratings">
+                <div>
+                    <h1>Top Ratings</h1>
+                </div>
+                <div>
                         {filtered_ratings && filtered_ratings.map((rating) => (
-                        <li key = {rating.id}>
+                        <div class="row" key = {rating.id}>
+                            <div class="column">
                                 {rating.comment}
-                            <VoteButton
-                                vote={rating.vote ? rating.vote : false}
-                                rating_id={rating.id}
-                            />
-                        </li>
+                            </div>
+                            <div class="column">
+                                <VoteButton
+                                    vote={rating.vote ? rating.vote : false}
+                                    rating_id={rating.id}
+                                />
+                            </div>
+                            <div>
+                                100
+                            </div>
+                        </div>
                         )
                         )}
-                </ul>
+                </div>
                 </div>             
                 <div>
-                    <CreateRating/>
+                    {logged_in === "true" && <CreateRating/>}
                 </div>
             </div>
 
