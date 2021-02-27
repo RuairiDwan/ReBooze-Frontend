@@ -1,8 +1,4 @@
-:root {
-    --primary: #1888ff;
-  }
-  
-  .btn {
+  .btn{
     padding: 8px 20px;
     border-radius: 4px;
     height: 20px;
@@ -14,17 +10,5 @@
     cursor: pointer;
     background-color: #fff;
   }
-
-.btn_up_vote {
-    padding: 8px 20px;
-    border-radius: 4px;
-    outline: none;
-    border: none;
-    font-size: 18px;
-    color: #000000;
-    cursor: pointer;
-    background-color: #4cff00;
-}
-
 
 

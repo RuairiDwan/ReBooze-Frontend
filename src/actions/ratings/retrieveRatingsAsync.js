@@ -3,10 +3,10 @@ import { retrieveRatings } from './retrieveRatings';
 
 export const RETRIEVE_RATINGS = 'RETRIEVE_RATINGS'
 
-export default function retrieveRatingsAsync (data) {
+export default function retrieveRatingsAsync (beerID) {
     console.log("here")
     return (dispatch) => {
-        return API.getRatings(data)
+        return API.getRatings(beerID)
         .then((responseData) => {
           console.log('Retrieving Ratings', responseData)
           dispatch(retrieveRatings(responseData))

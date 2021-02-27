@@ -1,0 +1,105 @@
+.beer-photo {
+    height: 150px;
+    width: 150px;
+}
+.rating-container{
+    width: 75%;
+    margin: auto;
+}
+.ratings {
+    top: 100%;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+.details-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 25%;
+    margin: auto;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+
+.heading-row{
+    align-content: center;
+    width: 100%;
+    margin: auto;
+}
+
+.details-left{
+    width: 33%;
+    margin: auto;
+    justify-content: center;
+    border-width: 2px;
+
+}
+
+.details-middle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 33%;
+    margin: auto;
+    border-right: solid;
+    border-left: solid;
+    border-width: 2px;
+}
+
+.details-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 33%;
+    margin: auto;
+}
+
+.column-rating {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.details-column{
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto; 
+}
+
+.column-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    padding: 18px 18px;
+
+}
+
+.column-number {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+}

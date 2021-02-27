@@ -8,9 +8,8 @@ import Profile from './components/Profile'
 import Navbar from './components/navbar/Navbar';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { Provider } from 'react-redux'
-import Beer from './components/Beer'
+import Beer from './components/IndividualBeerPage/Beer'
 import HomePage from './components/HomePage'
-import CreateRating from './components/CreateRating'
 import Callback from './components/Callback'
 
 
@@ -38,7 +37,6 @@ export default class App extends React.Component {
           <Navbar/>
           <div className="App">
             <Route path='/' exact component={HomePage}/>
-            <Route path='/rate' component={CreateRating}/>
             <Route path='/profile' component={Profile}/>
             <Route path='/beer-page' component={Beer}/>
             <Route path='/callback' component={Callback}/>

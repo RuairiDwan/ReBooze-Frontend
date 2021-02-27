@@ -16,7 +16,7 @@ function VoteButton(props) {
                 className="btn"
                 onClick={() => !props.vote && props.up_vote({
                     "rating_id": props.rating_id,
-                    "voter_id": 1
+                    "voter_id": localStorage.getItem("User_ID")
                 })}
                 />
             </div>

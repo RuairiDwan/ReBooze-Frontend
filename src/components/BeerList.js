@@ -21,7 +21,7 @@ class BeerList extends Component {
         ))
    
         return (
-            <div>
+            <div className="beer-list-container">
                 <div className="search-container">
                     <input 
                         className="search-box"
@@ -31,17 +31,11 @@ class BeerList extends Component {
                         onChange={(event) => this.props.beerSearch(event.target.value)}
                     />
                     <button
-                    className="search-button">
+                    className="search-button"
+                    onClick={(event) => this.props.beerSearch(event.target.value)}>
                         Search
                     </button>
                 </div>
-
-                        <div class="row"> 
-                            <div class="column">Beer</div>
-                            <div class="column">Average Rating</div>
-                            <div class="column">Brewery</div>
-                            <div class="column">Total Ratings</div>
-                        </div>
                     {beers && showingBeers.map((beer) => (
                         <div key = {beer.id}>
                             <BeerListItem
@@ -50,6 +44,7 @@ class BeerList extends Component {
                                 brewery={beer.brewery}
                                 totalRatings={beer.totalRatings}
                                 id={beer.id}
+                                image={beer.image}
                             />
                         </div>
                         )

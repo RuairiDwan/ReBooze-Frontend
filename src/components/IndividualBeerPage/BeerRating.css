@@ -1,0 +1,85 @@
+.ratings-container{
+    padding: 5px;
+    background-color: white;
+    width: 50%;
+    border: lightgray;
+    border-bottom: solid;
+    border-top: solid;
+    border-width: 1px;
+    margin: auto;
+}
+.rating-row{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 20px;
+    background-color: red;
+}
+
+.column-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    padding: 18px 18px;
+    width: 5%;
+
+}
+
+.column-comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    width: 90%;
+    padding-right: 5px;
+    font-size: 20px;
+
+}
+
+.column-number {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    width: 5%;
+    padding: 5px;
+}
+
+.rating-column-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+}
+
+.rating-column-title{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+    width: 100%;
+    padding: 5px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }

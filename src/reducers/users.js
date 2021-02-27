@@ -5,11 +5,10 @@ export default function user (state = [], action) {
 
     switch (action.type) {
         case RETRIEVE_USER_DATA :
-            console.log('Receiving User Data')
-            console.log(action.user)
+            localStorage.setItem("User_ID", action.user.id)
             return {
                 ...state,
-                user: action.user
+                ...action.user
             }
 
         default :

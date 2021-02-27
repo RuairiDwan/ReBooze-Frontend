@@ -1,16 +1,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import submitRatingAsync from '../actions/ratings/submitRatingAsync'
-
+import submitRatingAsync from '../../actions/ratings/submitRatingAsync'
+import Cookies from 'universal-cookie';
+import './CreateRating.css'
+import Slider from 'react-input-slider';
 
 
 class CreateRating extends Component {
 
-    
+    componentDidMount () {
+        console.log("Submit Rating Component")
+        console.log("The Cookie is:")
+        const cookie = new Cookies()
+        console.log(cookie.get('JWT'))
+
+    }
 
     render () {
         const { submitRatingAsync } = this.props
         const selected = parseInt(localStorage.getItem("beer_selected"), 10)
+        const cookie = new Cookies()
+        localStorage.getItem("User_ID")
 
         function ratingSubmitClick() {
             const commentBtn = document.getElementById('comment')
@@ -23,10 +33,10 @@ class CreateRating extends Component {
             console.log(selected)
             submitRatingAsync({
                 'beer_id': selected,
-                'user_id': 1,
+                'user_id': localStorage.getItem("User_ID"),
                 'beer_rating': rating,
                 'comment': comment  
-              })
+              }, cookie.get('JWT'))
             
         }
         console.log('Create Rating Props')
@@ -35,29 +45,32 @@ class CreateRating extends Component {
 
         return (
             <div>
-                <div> 
-                    Submit a Rating for {this.props.beerName}
-                    
-
-                </div>
                 <div>
                     <input
                     id='comment'
+                    className="comment-input"
                     type='text'
                     placeholder='Comment'
                     />
-                    <input
-                    id='rating'
-                    type='number'
-                    placeholder='Number'
-                    />
+                    <div className="slider">
+                        <input
+                        id='rating'
+                        type="range" 
+                        placeholder='Number'
+                        min="0" 
+                        max="5" 
+                        defaultValue="3" 
+                        step="1"/>
+                    </div>
+                    
                 </div>
                 <div>
                     <button
+                    class="submit-btn"
                     type="button"
                     onClick={() => ratingSubmitClick()}
                     >
-                    Submit Rating
+                    Submit
                     </button>
                 </div>
 
@@ -76,7 +89,7 @@ const mapStateToProps = ({beers}) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      submitRatingAsync: (data) => {dispatch(submitRatingAsync(data))}
+      submitRatingAsync: (data, token) => {dispatch(submitRatingAsync(data, token))}
     }
   }
 

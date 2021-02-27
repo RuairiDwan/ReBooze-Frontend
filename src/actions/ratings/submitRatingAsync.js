@@ -2,12 +2,13 @@ import * as API from '../../API'
 import { submitRating } from './submitRating';
 
 
-export default function submitRatingAsync (data) {
+export default function submitRatingAsync (data, token) {
     return (dispatch) => {
-        return API.submitRating(data)
+        return API.submitRating(data, token)
         .then((responseData) => {
-          console.log('Submitting Rating', responseData)
-          dispatch(submitRating(responseData))
+          console.log('Submitting Rating')
+          console.log(responseData)
+          dispatch(submitRating(data))
         })
     }
 }

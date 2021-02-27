@@ -6,7 +6,12 @@ export default function retrieveUserDataAsync (data) {
     return (dispatch) => {
         return API.handleUserLogin(data)
             .then((responseData) => {
-                dispatch(retrieveUserData(responseData))
+                return responseData.json()
+                //
         })
+            .then((data) => {
+                console.log(data)
+                dispatch(retrieveUserData(data))
+            })
     }
 }

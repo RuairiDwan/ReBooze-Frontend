@@ -2,15 +2,16 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { connect } from 'react-redux';
 import retrieveUserDataAsync from '../../actions/users/retrieveUserDataAsync';
-import './LoginButton.css'
+import './LoginButton.css';
 
 
 const LoginButton = (props) => {
   const { loginWithRedirect } = useAuth0();
+  
 
 
   return (
-      <button type="button" classs="button" onClick={() => loginWithRedirect()}>Log In</button>
+      <button classsName="btn" onClick={() => loginWithRedirect()}>Log In</button>
   );
 };
 

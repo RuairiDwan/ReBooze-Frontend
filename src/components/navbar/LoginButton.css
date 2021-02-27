@@ -1,19 +1,16 @@
-.button {
+button {
   height: 40px;
-  width: 50%;
+  width: 120px;
   border-radius: 4px;
-  font-size: 12px;
-  color: transparent;
+  border: solid;
+  font-size: 20px;
   cursor: pointer;
+  color: #fff;
   background-color: transparent;
 }
 
-.button:hover {
-  padding: 6px 18px;
-  transition: all 0.3s ease-out;
-  background-color: transparent;
+button:hover {
   color: #fff;
   border-radius: 4px;
   border: 2px solid var(--primary);
-  transition: all 0.3s ease-out;
 }

@@ -7,7 +7,8 @@ export default function retrieveBeersAsync () {
     return (dispatch) => {
         return API.getBeers()
         .then((responseData) => {
-          console.log('Beers Request', responseData)
+          console.log('Beers Request')
+          console.log(responseData)
           dispatch(retrieveBeers(responseData))
         })
     }

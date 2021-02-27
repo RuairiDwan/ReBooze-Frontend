@@ -8,18 +8,54 @@ import './BeerListItem.css'
 class BeerListItem extends Component {
     render () {
         return (
-            <div class="row">
-                <div class="column">{this.props.name}</div>
-                <div class="column">{this.props.rating}</div>
-                <div class="column">{this.props.brewery}</div>
-                <div class="column">{this.props.totalRatings}</div>
-                <Link to='beer-page'>
-                    <button 
-                    type="button"
-                    onClick={() => this.props.beerPageSelection(this.props.id)}/>
-                </Link>
-                
-            </div>           
+            <div className="beer-list-item-container">
+                <div class="row">
+                    <div>
+                    <img src={this.props.image} className="photo" />
+                    </div>
+                    <div class="column-text">
+                        <div className="row">
+                            <Link 
+                            to='beer-page' 
+                            className="link">
+                                <div 
+                                type="text"
+                                className="beer-text"
+                                onClick={() => this.props.beerPageSelection(this.props.id)}>
+                                    {this.props.name}
+                                </div>
+                            </Link>
+                        </div>
+                        <div className="row">
+                            <div 
+                            type="text" 
+                            className="brewery-text">
+                                Brewery
+                            </div>
+                            
+                        </div>                   
+                    </div>
+                    <div class="column-numbers">
+                        <div className="row">
+                            <div>
+                                Average Rating: 
+                            </div>
+                            <div>
+                                {this.props.rating}
+                            </div>
+                        </div>
+                        <div className="row">
+                        <div>
+                                Total Ratings: 
+                            </div>
+                            <div>
+                                {this.props.totalRatings}
+                            </div>
+                        </div>                
+                    </div>
+                </div>           
+            </div>
+            
         )           
     }
 }

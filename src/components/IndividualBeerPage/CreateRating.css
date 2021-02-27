@@ -1,0 +1,44 @@
+.container{
+    padding: 10px;
+    background: transparent;
+}
+
+input[type="range"]{
+    width: 20%;
+}
+
+input[type=range]{
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    height: .35em;
+    background: yellowgreen;
+    border: none;
+    border-radius: 3px;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 1.1em;
+    width: 1.1em;
+    border-radius: 50%;
+    background: gray;
+    margin-top: -4px;
+}
+
+.comment-input{
+    width: 25%;
+    height: 50px;
+}
+
+.submit-btn{
+    height: 40px;
+    width: 80px;
+}
+
+.slider{
+    background: transparent;
+    padding: 15px;
+    color: white;
+}

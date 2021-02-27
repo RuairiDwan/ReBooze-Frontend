@@ -12,38 +12,33 @@ const Callback = (props) => {
 
     const { user, isAuthenticated, getAccessTokenSilently } = useAuth0()
     const history = useHistory();
-    isAuthenticated && localStorage.setItem("logged in", "true")
+    const cookies = new Cookies();
 
     const login = async () => {
         try {
             console.log("In async function")
+            localStorage.setItem("logged in", "true")
             const token = await getAccessTokenSilently({
                 audience: 'https://rebooze-login',
                 scope: "get:my-ratings"
             });
             cookies.set('JWT', token, { path: '/' });
 
-            console.log(token)
         } catch (e) {
             console.error(e);
         }
     }
-    
-    console.log("The user is")
-    console.log(isAuthenticated)
+
 
     isAuthenticated && login()
-
-    const cookies = new Cookies();
-    
-    console.log("The JWT is :")
-    console.log(cookies.get('JWT'));
-
 
     typeof user !== 'string' && isAuthenticated && props.retrieveUserData({
         "name": user.given_name,
         "email": user.email
     })
+
+    console.log("The user is")
+    console.log(props.user.id)
 
     
 
