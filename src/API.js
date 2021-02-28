@@ -1,6 +1,6 @@
 
-//const api = "https://rebooze.herokuapp.com"
-const api = "http://127.0.0.1:5000"
+const api = "https://rebooze.herokuapp.com"
+//const api = "http://127.0.0.1:5000"
 
 var obj = {
     mode: 'cors',

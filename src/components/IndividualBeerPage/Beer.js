@@ -71,7 +71,7 @@ class Beer extends Component {
                 </div>
                 <div class="details-row">
                     <div class="details-left">
-                        4.2%
+                    {beer && selected && beer[0].strength}%
                     </div>
                     <div class="details-middle">
                         <div class="">

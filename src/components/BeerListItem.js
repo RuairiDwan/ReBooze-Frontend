@@ -26,11 +26,16 @@ class BeerListItem extends Component {
                                 </div>
                             </Link>
                         </div>
-                        <div className="row">
+                        <div className="column-brewery">
                             <div 
                             type="text" 
                             className="brewery-text">
                                 Brewery
+                            </div>
+                            <div 
+                            type="text" 
+                            className="brewery-text">
+                                {this.props.brewery}
                             </div>
                             
                         </div>                   
