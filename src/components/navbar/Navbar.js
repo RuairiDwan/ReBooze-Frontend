@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Button } from './Button';
+import Button from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import Dropdown from './Dropdown';
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
-import ProfileButton from './ProfileButton'
 
 
 function Navbar() {

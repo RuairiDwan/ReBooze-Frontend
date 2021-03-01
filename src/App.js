@@ -23,7 +23,8 @@ export default class App extends React.Component {
         console.log("The App component is mounting")
         const isAuthenticated = localStorage.getItem("isAuthenticated")
 
-
+        const logged_in = localStorage.getItem("logged in")
+        !logged_in && localStorage.setItem("logged in", "false")
         store.dispatch(retrieveAllData())
     
 

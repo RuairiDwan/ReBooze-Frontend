@@ -9,7 +9,7 @@ ReactDOM.render(
   <Auth0Provider
         domain="dev-jlpcmeif.eu.auth0.com"
         clientId="0qJeQS5S2IjLSwMB0GhxUQSZ8hR0PWDX"
-        redirectUri="https://localhost:3000/callback"
+        redirectUri="https://rebooze-5efff.web.app/callback"
         audience="https://rebooze-login"
         scope="get:my-ratings"
   >

@@ -1,11 +1,14 @@
 import React from 'react';
+import { useAuth0 } from "@auth0/auth0-react";
 import './Button.css';
 import { Link } from 'react-router-dom';
 
-export function Button() {
+const Button = () => {
+  const { loginWithRedirect } = useAuth0();
+  
   return (
-    <Link to='sign-up'>
-      <button className='btn'>Sign Up</button>
-    </Link>
+      <button classsName="btn" onClick={() => loginWithRedirect()}>Sign Up</button>
   );
-}
+};
+ 
+export default Button
